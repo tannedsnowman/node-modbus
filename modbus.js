@@ -3,10 +3,10 @@ var client = new ModbusRTU()
 
 // open connection to a serial port
 try {
-    client.connectRTUBuffered("/dev/ttyUSB0", { baudRate: 9600 })
+    client.connectRTUBuffered("/dev/ttyS0", { baudRate: 9600 })
 } catch (e) {
     console.log(e)
-    client.connectRTUBuffered("/dev/ttyUSB1", { baudRate: 9600 })
+    client.connectRTUBuffered("/dev/ttyS1", { baudRate: 9600 })
 }
 
 client.setID(1)
