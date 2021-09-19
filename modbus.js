@@ -12,3 +12,5 @@ const read = async () => {
   const val =  await client.readInputRegisters(33000, 100)
   console.log(val)
 }
+
+read()
