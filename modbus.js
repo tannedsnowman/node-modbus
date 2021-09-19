@@ -4,13 +4,17 @@ var client = new ModbusRTU()
 // open connection to a serial port
 client.connectRTUBuffered("/dev/ttyUSB0", { baudRate: 9600 })
 
-client.setTimeout(500)
+client.setID(1)
+
+// client.setTimeout(500)
 
 const read = async () => {
-  client.setID(1)
-
-  const val =  await client.readInputRegisters(33000, 100)
-  console.log(val)
+  try {
+    const val = await client.readInputRegisters(33000, 100)
+    console.log(val)
+  } catch (e) {
+    console.log(e)
+  }
 }
 
 read()
