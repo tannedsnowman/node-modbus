@@ -2,7 +2,12 @@ var ModbusRTU = require("modbus-serial")
 var client = new ModbusRTU()
 
 // open connection to a serial port
-client.connectRTUBuffered("/dev/ttyUSB0", { baudRate: 9600 })
+try {
+    client.connectRTUBuffered("/dev/ttyUSB0", { baudRate: 9600 })
+} catch (e) {
+    console.log(e)
+    client.connectRTUBuffered("/dev/ttyUSB1", { baudRate: 9600 })
+}
 
 client.setID(1)
 
