@@ -2,9 +2,7 @@ var ModbusRTU = require("modbus-serial")
 var client = new ModbusRTU()
 
 // open connection to a serial port
-client.connectRTUBuffered("/dev/ttyUSB0", { baudRate: 9600 }, read)
 
-client.setID(1)
 
 const read = async () => {
   try {
@@ -15,3 +13,7 @@ const read = async () => {
     console.log(e)
   }
 }
+
+client.connectRTUBuffered("/dev/ttyUSB0", { baudRate: 9600 }, read)
+
+client.setID(1)
